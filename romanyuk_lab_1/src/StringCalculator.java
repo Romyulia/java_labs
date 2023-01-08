@@ -5,7 +5,7 @@ public class StringCalculator {
 
     public int add(String numbers) throws StringCalculatorExceptions{
         int sumOfNumbers = 0;
-        String delimiters = ",|\n";
+        String delimiters = "";
         String[] num;
         if(numbers.length() == 0) {
             return 0;
@@ -17,6 +17,7 @@ public class StringCalculator {
             return sumOfNumbers;
         }
         else{
+            delimiters = ",|\n";
             num = numbers.split(delimiters);
             sumOfNumbers = summingNumbers(num);
             return sumOfNumbers;
@@ -43,7 +44,18 @@ public class StringCalculator {
             }while(numbers.charAt(2 + counter) == '[');
         }
         else{
-            delimiters.add("" + numbers.charAt(2));
+            int counter = 0;
+            StringBuilder stringBuilder = new StringBuilder();
+            do{
+                if(numbers.charAt(2+counter) == '*' | numbers.charAt(2+counter) == '+'|
+                        numbers.charAt(2+counter) == '?' | numbers.charAt(2+counter) == '^'|
+                        numbers.charAt(2+counter) == '$'){
+                    stringBuilder.append("\\");
+                }
+                stringBuilder.append(numbers.charAt(2+counter));
+                counter++;
+            }while(numbers.charAt(2 + counter) != '\n');
+            delimiters.add(stringBuilder.toString());
         }
         delimiters.add(",");
         delimiters.add("\n");
