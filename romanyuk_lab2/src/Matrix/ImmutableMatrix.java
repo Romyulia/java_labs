@@ -31,23 +31,6 @@ public final class ImmutableMatrix {
             }
         }
     }
-    public void fillMatrix(){
-        Scanner scanner = new Scanner(System.in);
-        for(int i=0; i<row; i++){
-            for(int j=0; j<colum; j++){
-                System.out.print("Enter ["+i+"]["+j+"] element:");
-                matrix[i][j] = scanner.nextDouble();
-            }
-        }
-    }
-    public void fillRandomMatrix(){
-        for(int i=0; i<row; i++){
-            for(int j=0; j<colum; j++){
-                double random = Math.random();
-                matrix[i][j] = -10 + (int)(random * 20);
-            }
-        }
-    }
     public void printMatrix(){
         for(int i = 0; i<row; i++){
             for(int j=0; j<colum; j++){
